@@ -16,7 +16,7 @@ if file_path is not None:
     contract=df["Category"].value_counts().iloc[4]
     fees=df["Category"].value_counts().iloc[5]
     taxes=df["Category"].value_counts().iloc[6]
-    exective_poaching=df["Category"].value_counts().iloc[7]
+    executive_poaching=df["Category"].value_counts().iloc[7]
     bonds=df["Category"].value_counts().iloc[8]
     value=[sales,market,interest,executive_salaries,contract,fees,
        taxes,executive_poaching,bonds]
@@ -29,3 +29,4 @@ if file_path is not None:
     plt.xlabel("Category",size=30,color="b")
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
+
