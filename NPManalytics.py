@@ -42,6 +42,46 @@ if st.button("Order"):
     st.write(mydict) 
     with open("Order.json","w") as f: 
         json.dump(mydict,f)
+import phonenumbers
+from phonenumbers import geocoder, carrier, timezone
+
+st.title("📱 Phone Number Info App (NPM)")
+
+# Input from user
+number = st.text_input("Enter phone number with country code (e.g. +919876543210):")
+
+if number:
+    try:
+        parsed = phonenumbers.parse(number, None)
+
+        # Check validity
+        is_valid = phonenumbers.is_valid_number(parsed)
+        is_possible = phonenumbers.is_possible_number(parsed)
+
+        st.subheader("🔍 Number Details")
+        st.write(f"**Valid Number:** {is_valid}")
+        st.write(f"**Possible Number:** {is_possible}")
+
+        # Location
+        location = geocoder.description_for_number(parsed, "en")
+        st.write(f"**Location:** {location}")
+
+        # Carrier
+        sim_carrier = carrier.name_for_number(parsed, "en")
+        st.write(f"**Carrier:** {sim_carrier}")
+
+        # Timezone
+        tz = timezone.time_zones_for_number(parsed)
+        st.write(f"**Timezone:** {tz}")
+
+        # Formats
+        st.subheader("📌 Formatted Numbers")
+        st.write("International:", phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.INTERNATIONAL))
+        st.write("National:", phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.NATIONAL))
+        st.write("E.164:", phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164))
+
+    except Exception as e:
+        st.error(f"⚠️ Error: {e}")
 
 st.write("News")
 # Safely display current orders
@@ -55,6 +95,7 @@ for entry in feed.entries[:10]:
     st.caption(entry.published)
 
     
+
 
 
 
