@@ -4,7 +4,7 @@ import json
 import pandas as pd
 import requests
 import matplotlib.pyplot as plt
-import streamlit.components.v1 as components
+import feedparser
 file_path= st.file_uploader("Upload your CSV file", type="csv")
 titlename = st.text_input("Enter Your Chart Title", "My Chart")
 if file_path is not None:
@@ -31,9 +31,13 @@ if file_path is not None:
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
-response=requests.get(url)
-out=response.text
-st.write(out)
+feed=feed.parse(url)
+st.title("NDTV -newspaper")
+for entry in feed.entries[:10]:
+    st.subheader(entry.title)
+    st.write(entry.link)
+    st.caption(entry.published)
+
 
 
 
