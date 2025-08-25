@@ -6,5 +6,8 @@ requests
 feedparser
 phonenumbers
 json
+geocoder
+timezone
+
 
 
