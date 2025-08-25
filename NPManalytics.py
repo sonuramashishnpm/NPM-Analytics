@@ -30,16 +30,28 @@ if file_path is not None:
     plt.xlabel("Category",size=30,color="b")
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
-mydict={}
-Your_Sim_Company_Name=st.text_input("Enter Your Sim-Companies Account Name")
-passward=st.number_input("Enter only numbers for passward")
-order=st.text_input("Enter The Product Name and quantity like this :- Product Name, Quantity")
+if "orders" not in st.session_state:
+    st.session_state["orders"] = []
+
+Your_Sim_Company_Name = st.text_input("Enter Your Sim-Companies Account Name")
+passward = st.number_input("Enter only numbers for passward")
+order = st.text_input("Enter The Product Name and quantity like this :- Product Name, Quantity")
+
 if st.button("Order"):
-    mydict["Order Details"]=(Your_Sim_Company_Name,passward,order)
-    st.write(mydict)
-    with open("Order.json","w") as f:
-        json.dump(mydict,f)
-st.write("Current orders:", st.session_state.orders)
+    # Append new order
+    st.session_state["orders"].append({
+        "Acc Name": Your_Sim_Company_Name,
+        "Password": passward,
+        "Order": order
+    })
+    st.success("Order saved in session!")
+
+    # Write orders to JSON
+    with open("Order.json", "w") as f:
+        json.dump(st.session_state["orders"], f, indent=4)
+
+# Safely display current orders
+st.write("Current orders:", st.session_state.get("orders", []))
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
 feed=feedparser.parse(url)
 st.title("NDTV -newspaper")
@@ -49,6 +61,7 @@ for entry in feed.entries[:10]:
     st.caption(entry.published)
 
     
+
 
 
 
