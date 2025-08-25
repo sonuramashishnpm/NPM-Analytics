@@ -4,6 +4,8 @@ import json
 import pandas as pd
 import requests
 import matplotlib.pyplot as plt
+name=st.text_input("Enter Your Email")
+Age=st.text_input("Enter Your Age")
 file_path= st.file_uploader("Upload your CSV file", type="csv")
 titlename = st.text_input("Enter Your Chart Title", "My Chart")
 if file_path is not None:
@@ -29,4 +31,5 @@ if file_path is not None:
     plt.xlabel("Category",size=30,color="b")
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
+
 
