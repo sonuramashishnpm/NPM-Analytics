@@ -5,6 +5,7 @@ import pandas as pd
 import requests
 import matplotlib.pyplot as plt
 import feedparser
+st.write("To Analyze your accounting and create Visualise charts")
 file_path= st.file_uploader("Upload your CSV file", type="csv")
 titlename = st.text_input("Enter Your Chart Title", "My Chart")
 if file_path is not None:
@@ -30,6 +31,7 @@ if file_path is not None:
     plt.xlabel("Category",size=30,color="b")
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
+st.write("If you want to order something")    
 mydict={} 
 Your_Sim_Company_Name=st.text_input("Enter Your Sim-Companies Account Name") 
 passward=st.number_input("Enter only numbers for passward") 
@@ -40,7 +42,7 @@ if st.button("Order"):
     with open("Order.json","w") as f: 
         json.dump(mydict,f)
 
-
+st.write("News")
 # Safely display current orders
 st.write("Current orders:", st.session_state.get("orders", []))
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
@@ -52,6 +54,7 @@ for entry in feed.entries[:10]:
     st.caption(entry.published)
 
     
+
 
 
 
