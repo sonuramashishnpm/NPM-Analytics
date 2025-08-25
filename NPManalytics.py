@@ -31,12 +31,13 @@ if file_path is not None:
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
-feed=feed.parse(url)
+feed=feedparser.parse(url)
 st.title("NDTV -newspaper")
 for entry in feed.entries[:10]:
     st.subheader(entry.title)
     st.write(entry.link)
     st.caption(entry.published)
+
 
 
 
