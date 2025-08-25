@@ -30,6 +30,11 @@ if file_path is not None:
     plt.xlabel("Category",size=30,color="b")
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
+url='https://feeds.feedburner.com/ndtvnews-top-stories'
+response=requests.get(url)
+out=response.text
+print(out)
+
 
 
 
