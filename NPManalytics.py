@@ -83,18 +83,19 @@ if number:
     except Exception as e:
         st.error(f"⚠️ Error: {e}")
 
-st.write("News")
+#st.write("News")
 # Safely display current orders
-st.write("Current orders:", st.session_state.get("orders", []))
-url='https://feeds.feedburner.com/ndtvnews-top-stories'
-feed=feedparser.parse(url)
-st.title("NDTV -newspaper")
-for entry in feed.entries[:10]:
-    st.subheader(entry.title)
-    st.write(entry.link)
-    st.caption(entry.published)
+#st.write("Current orders:", st.session_state.get("orders", []))
+#url='https://feeds.feedburner.com/ndtvnews-top-stories'
+#feed=feedparser.parse(url)
+#st.title("NDTV -newspaper")
+#for entry in feed.entries[:10]:
+ #   st.subheader(entry.title)
+ #   st.write(entry.link)
+ #   st.caption(entry.published)
 
     
+
 
 
 
