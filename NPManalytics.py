@@ -30,6 +30,14 @@ if file_path is not None:
     plt.xlabel("Category",size=30,color="b")
     plt.ylabel("Data",size=30,color="b")
     st.pyplot(plt)
+mydict={}
+Your_Sim_Company_Name=st.text_input("Enter Your Sim-Companies Account Name")
+passward=st.number_input("Enter only numbers for passward"))
+order=st.text_input("Enter The Product Name and quantity like this :- Product Name, Quantity")
+if st.button("Order"):
+    mydict["Order Details"]=(Your_Sim_Company_Name,passward,order)
+    st.write(mydict)
+
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
 feed=feedparser.parse(url)
 st.title("NDTV -newspaper")
@@ -37,6 +45,8 @@ for entry in feed.entries[:10]:
     st.subheader(entry.title)
     st.write(entry.link)
     st.caption(entry.published)
+    
+
 
 
 
