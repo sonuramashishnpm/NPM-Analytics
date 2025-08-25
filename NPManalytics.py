@@ -39,7 +39,7 @@ if st.button("Order"):
     st.write(mydict)
     with open("Order.json","w") as f:
         json.dump(mydict,f)
-
+st.write("Current orders:", st.session_state.orders)
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
 feed=feedparser.parse(url)
 st.title("NDTV -newspaper")
@@ -47,7 +47,9 @@ for entry in feed.entries[:10]:
     st.subheader(entry.title)
     st.write(entry.link)
     st.caption(entry.published)
+
     
+
 
 
 
