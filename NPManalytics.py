@@ -5,7 +5,7 @@ import pandas as pd
 import requests
 import matplotlib.pyplot as plt
 import feedparser
-st.write("Sonu Kumar")
+
 st.write("          To Analyze your accounting and create Visualise charts".center(30))
 file_path= st.file_uploader("Upload your CSV file", type="csv")
 titlename = st.text_input("Enter Your Chart Title", "My Chart")
@@ -55,6 +55,7 @@ for entry in feed.entries[:10]:
     st.caption(entry.published)
 
     
+
 
 
 
