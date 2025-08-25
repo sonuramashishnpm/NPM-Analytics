@@ -33,7 +33,8 @@ if file_path is not None:
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
 response=requests.get(url)
 out=response.text
-print(out)
+st.write(out)
+
 
 
 
