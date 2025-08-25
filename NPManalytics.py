@@ -5,6 +5,8 @@ import pandas as pd
 import requests
 import matplotlib.pyplot as plt
 import feedparser
+import phonenumbers
+import from phonenumbers import geocoder, carrier, timezone
 
 st.write("          To Analyze your accounting and create Visualise charts".center(30))
 file_path= st.file_uploader("Upload your CSV file", type="csv")
@@ -42,8 +44,6 @@ if st.button("Order"):
     st.write(mydict) 
     with open("Order.json","w") as f: 
         json.dump(mydict,f)
-import phonenumbers
-from phonenumbers import geocoder, carrier, timezone
 
 st.title("📱 Phone Number Info App (NPM)")
 
@@ -95,6 +95,7 @@ for entry in feed.entries[:10]:
     st.caption(entry.published)
 
     
+
 
 
 
