@@ -37,8 +37,8 @@ order=st.text_input("Enter The Product Name and quantity like this :- Product Na
 if st.button("Order"):
     mydict["Order Details"]=(Your_Sim_Company_Name,passward,order)
     st.write(mydict)
-with open("Order.json","w") as f:
-    json.dump(mydict,f)
+    with open("Order.json","w") as f:
+        json.dump(mydict,f)
 
 url='https://feeds.feedburner.com/ndtvnews-top-stories'
 feed=feedparser.parse(url)
@@ -48,6 +48,7 @@ for entry in feed.entries[:10]:
     st.write(entry.link)
     st.caption(entry.published)
     
+
 
 
 
