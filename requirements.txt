@@ -5,10 +5,8 @@ matplotlib
 requests
 feedparser
 phonenumbers
-json
-geocoder
-timezone
-carrier
+
+
 
 
 
