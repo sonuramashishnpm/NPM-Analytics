@@ -32,7 +32,7 @@ if file_path is not None:
     st.pyplot(plt)
 mydict={}
 Your_Sim_Company_Name=st.text_input("Enter Your Sim-Companies Account Name")
-passward=st.number_input("Enter only numbers for passward"))
+passward=st.number_input("Enter only numbers for passward")
 order=st.text_input("Enter The Product Name and quantity like this :- Product Name, Quantity")
 if st.button("Order"):
     mydict["Order Details"]=(Your_Sim_Company_Name,passward,order)
@@ -46,6 +46,7 @@ for entry in feed.entries[:10]:
     st.write(entry.link)
     st.caption(entry.published)
     
+
 
 
 
