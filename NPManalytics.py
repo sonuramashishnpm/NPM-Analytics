@@ -87,18 +87,9 @@ ip=requests.get("https://api.ipfy.org").text
 response=requests.get(f"https://ipinfo.io/{ip}/json").json()
 st.write(response)
 
-st.write("News")
- #Safely display current orders
-st.write("Current orders:", st.session_state.get("orders", []))
-url='https://feeds.feedburner.com/ndtvnews-top-stories'
-feed=feedparser.parse(url)
-st.title("NDTV -newspaper")
-for entry in feed.entries[:10]:
-    st.subheader(entry.title)
-    st.write(entry.link)
-    st.caption(entry.published)
 
     
+
 
 
 
