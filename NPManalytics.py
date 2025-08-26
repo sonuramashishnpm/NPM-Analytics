@@ -83,7 +83,7 @@ if number:
     except Exception as e:
         st.error(f"⚠️ Error: {e}")
 st.write("Your Location")
-ip=requests.get("https://api.ipfy.org").text()
+ip=requests.get("https://api.ipfy.org").text
 response=requests.get(f"https://ipinfo.io/{ip}/json").json()
 st.write(response)
 
@@ -99,6 +99,7 @@ for entry in feed.entries[:10]:
     st.caption(entry.published)
 
     
+
 
 
 
