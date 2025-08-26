@@ -82,6 +82,10 @@ if number:
 
     except Exception as e:
         st.error(f"⚠️ Error: {e}")
+st.write("Your Location")
+ip=requests.get("https://api.ipfy.org").text()
+response=requests.get(f"https://ipinfo.io/{ip}/json").json()
+st.write(response)
 
 st.write("News")
  #Safely display current orders
@@ -95,6 +99,7 @@ for entry in feed.entries[:10]:
     st.caption(entry.published)
 
     
+
 
 
 
