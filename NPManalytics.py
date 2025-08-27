@@ -36,17 +36,27 @@ st.write("📄 Place Your Order / Save Data to Google Sheet")
 
 scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
 
-# ---------------- Google Sheets Credentials ----------------
-try:
-    # Try using Streamlit Secrets first
-    secrets_dict = st.secrets["gcp_service_account"]
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_dict, scope)
-except KeyError:
-    # Fallback: use local JSON file
-    creds = ServiceAccountCredentials.from_json_keyfile_name(
-        "mythic-delight-462310-g7-80815affd458.json", scope
-    )
+# ---------------- Google Sheets Credentials Hardcoded ----------------
+gcp_service_account = {
+    "type": "service_account",
+    "project_id": "mythic-delight-462310-g7",
+    "private_key_id": "80815affd458a8035db5d5f47e670c502db34749",
+    "private_key": """-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC4sshIDgCaTa+X
+H9yVUA9iZXRItXAf9WG1U3LsCQBzyWmKlg8mYhSl4Bc2PfPXkpMi/Awkc9Zy9DQX
+...
+xpm3yHwE97NbPOSu4621jks=
+-----END PRIVATE KEY-----""",
+    "client_email": "npmsimco@mythic-delight-462310-g7.iam.gserviceaccount.com",
+    "client_id": "106573975290558922848",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/npmsimco@mythic-delight-462310-g7.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+}
 
+creds = ServiceAccountCredentials.from_json_keyfile_dict(gcp_service_account, scope)
 client = gspread.authorize(creds)
 sheet_name = "NPM_Data"
 
@@ -55,11 +65,7 @@ try:
     sheet = client.open(sheet_name).sheet1
 except gspread.SpreadsheetNotFound:
     sheet = client.create(sheet_name).sheet1
-    try:
-        # Share only if secrets available
-        sheet.share(secrets_dict["client_email"], perm_type='user', role='writer')
-    except NameError:
-        pass
+    sheet.share(gcp_service_account["client_email"], perm_type='user', role='writer')
     st.info(f"📄 Sheet '{sheet_name}' created automatically!")
 
 # Inputs for Google Sheet
