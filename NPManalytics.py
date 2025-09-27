@@ -19,9 +19,9 @@ titlename = st.text_input("Enter Your Chart Title", "My Chart")
 if file_path is not None:
     df = pd.read_csv(file_path)
     pd.options.display.max_rows = 1000000
-    categories = ["Sales","Market","Interest","Executive Salaries","Contracts","Fees","Taxes",
-                  "Executive Poaching","Bonds"]
-    value = [df["Type"].value_counts().get(cat,0) for cat in categories]
+    categories = ["sales","market","interest","executive salaries","contracts","fees","taxes",
+                  "executive poaching","bonds"]
+    value = [df["Category"].value_counts().get(cat,0) for cat in categories]
 
     plt.figure(figsize=(13, 6))
     plt.bar(categories, value, color="g")
@@ -30,4 +30,5 @@ if file_path is not None:
     plt.xlabel("Category", size=30, color="b")
     plt.ylabel("Data", size=30, color="b")
     st.pyplot(plt)
+
 
