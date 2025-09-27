@@ -21,7 +21,7 @@ if file_path is not None:
     pd.options.display.max_rows = 1000000
     categories = ["Sales","Market","Interest","Executive Salaries","Contracts","Fees","Taxes",
                   "Executive Poaching","Bonds"]
-    value = [df["Category"].value_counts().get(cat,0) for cat in categories]
+    value = [df["Type"].value_counts().get(cat,0) for cat in categories]
 
     plt.figure(figsize=(13, 6))
     plt.bar(categories, value, color="g")
@@ -30,3 +30,4 @@ if file_path is not None:
     plt.xlabel("Category", size=30, color="b")
     plt.ylabel("Data", size=30, color="b")
     st.pyplot(plt)
+
