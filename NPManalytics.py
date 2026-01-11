@@ -9,6 +9,7 @@ from phonenumbers import geocoder, carrier, timezone
 from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from npmai import Ollama
 
 st.write("          To Analyze your accounting and create Visualise charts".center(30))
 
@@ -30,5 +31,6 @@ if file_path is not None:
     plt.xlabel("Category", size=30, color="b")
     plt.ylabel("Data", size=30, color="b")
     st.pyplot(plt)
+
 
 
