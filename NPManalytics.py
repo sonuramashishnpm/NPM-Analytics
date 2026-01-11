@@ -40,12 +40,12 @@ if file_path is not None:
     plt.xlabel("Category", size=30, color="b")
     plt.ylabel("Data", size=30, color="b")
     st.pyplot(plt)
-else:
-    st.write("Please enter your Simcopanies Accounting file")
+
 
 if question:
     response=llm.invoke(question)
     st.write(response)
+
 
 
 
