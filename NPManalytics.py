@@ -11,11 +11,20 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from npmai import Ollama
 
+llm=Ollama(
+    model="llama3.2",
+    temperature=0.8,
+)
+
+
 st.write("          To Analyze your accounting and create Visualise charts".center(30))
 
 # ---------------- CSV Chart Section ----------------
 file_path = st.file_uploader("Upload your CSV file", type="csv")
 titlename = st.text_input("Enter Your Chart Title", "My Chart")
+question = st.text_input("Enter your any query related to your data of simco you can ask to NPMAI")
+
+
 
 if file_path is not None:
     df = pd.read_csv(file_path)
@@ -31,6 +40,14 @@ if file_path is not None:
     plt.xlabel("Category", size=30, color="b")
     plt.ylabel("Data", size=30, color="b")
     st.pyplot(plt)
+else:
+    st.write("Please enter your Simcopanies Accounting file")
+
+if question:
+    response=llm.invoke(question)
+    st.write(response)
+
+
 
 
 
