@@ -70,5 +70,6 @@ if question:
     You can see some like information you can get None even beacause some activies might not happen sometimes
     Now you have to tell things as per User Questions related to this data ok so this is the user question: {question}
     """
-    response=llm.invoke(prompts.strip())
+    response=llm.invoke(prompts)
     st.write(response)
+
