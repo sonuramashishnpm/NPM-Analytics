@@ -2,10 +2,7 @@ streamlit
 numpy
 pandas
 matplotlib
-requests
-phonenumbers
-gspread
-oauth2client
 feedparser
 npmai
+
 
