@@ -11,7 +11,7 @@ llm=Ollama(
     temperature=0.3,
 )
 
-
+st.title("NPM Data AI")
 st.write("          To Analyze your accounting and create Visualise charts".center(30))
 
 # ---------------- CSV Chart Section ----------------
@@ -72,4 +72,5 @@ if question:
     """
     response=llm.invoke(prompts)
     st.write(response)
+
 
