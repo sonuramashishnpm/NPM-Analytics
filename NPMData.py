@@ -50,7 +50,7 @@ if file_path is not None:
 
 
 if question:
-    prompt=f"""
+    prompts=f"""
     Hey you are a Business Analyst and you are going to get some accounting data of a company of simcompanies,
     simcompanies is a business simulation game and here you have like all indutries that exist in real world and there players have to like deal with real players 
     as company and you have to grow your company using a lot of way like reselling and a lot producing retailing as i said you have a lot of industries to work in ok 
@@ -70,8 +70,9 @@ if question:
     You can see some like information you can get None even beacause some activies might not happen sometimes
     Now you have to tell things as per User Questions related to this data ok so this is the user question: {question}
     """
-    response=llm.invoke(prompt)
+    response=llm.invoke(prompts)
     st.write(response)
+
 
 
 
