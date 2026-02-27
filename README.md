@@ -13,6 +13,8 @@ NPM-Analytics is a collection of tools and code snippets for data analytics, bui
 - **Simple Streamlit UI:** All interactive features are accessible via a clean Streamlit app interface.
 
 ---
+## To understand repo project with AI in detail with full documentation visit here:-
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/sonuramashishnpm/NPM-Analytics)
 
 ## 🛠 Technologies Used
 
